@@ -36,16 +36,9 @@ Una aplicación web moderna para gestionar una colección de Pokémon, construid
     pip install fastapi uvicorn sqlmodel jinja2 python-multipart
     ```
 4.  **Ejecutar la aplicación**:
-    El archivo principal se encuentra en `src/main.py`. Asegúrate de ejecutarlo desde la raíz del proyecto o ajustando el path.
-    ```bash
-    # Ejemplo desde la raíz
-    python src/main.py
-    ```
-    O usando uvicorn directamente si se prefiere:
-    ```bash
-    uvicorn src.main:app --reload
-    ```
-5.  **Abrir en el navegador**:
+    El archivo principal se encuentra en `src/main.py`. Asegúrate de ejecutarlo desde la raíz del proyecto.
+    
+6.  **Abrir en el navegador**:
     Visita `http://127.0.0.1:3000`
 
 ## 📂 Estructura del Proyecto
