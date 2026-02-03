@@ -1,0 +1,13 @@
+name: fastapi-mysql
+
+services:   
+  db-mysql:  
+    image: mysql 
+    container_name: db-mysql-pokemons  
+    environment:  
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: pokemonsdb
+      MYSQL_USER: jorge
+      MYSQL_PASSWORD: sasa1234
+    ports:  
+      - "13306:3306"  

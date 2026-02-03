@@ -1,0 +1,45 @@
+{% extends "fragments/base.html" %}
+{% block title %}PokeApp{% endblock %}
+
+{% block content %}
+<div class="page-header"
+    style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+    <h1>Lista de Pokémons</h1>
+    <a href="/pokemons/new" class="btn btn-primary">
+        + Nuevo Pokémon
+    </a>
+</div>
+
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Nivel</th>
+                <th>Ataque</th>
+                <th>Defensa</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for pokemon in pokemons %}
+            <tr>
+                <td>{{ pokemon.id }}</td>
+                <td style="font-weight: 500;">{{ pokemon.nombre }}</td>
+                <td>{{ pokemon.nivel }}</td>
+                <td>{{ pokemon.ataque }}</td>
+                <td>{{ pokemon.defensa }}</td>
+                <td>
+                    <a href="/pokemons/{{ pokemon.id }}" class="btn btn-sm btn-secondary">Ver detalle</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+
+{% block footer %}
+Autor: Jorge Narbona
+{% endblock %}

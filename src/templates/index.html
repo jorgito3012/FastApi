@@ -1,0 +1,21 @@
+{% extends "fragments/base.html" %}
+{% block title %}PokeApp{% endblock %}
+
+{% block content %}
+<div class="hero-section">
+    <h1>Bienvenido a la Web de Pokémons</h1>
+    <p style="font-size: 1.25rem; max-width: 600px; margin: 0 auto 2rem;">
+        Administra tu colección de Pokémons de manera fácil y rpida.
+        Consulta estadísticas, añade nuevos registros y explora el mundo Pokémon.
+    </p>
+
+    <div class="hero-actions">
+        <a href="{{ url_for('ver_pokemons') }}" class="btn btn-primary">Ver Lista de Pokémons</a>
+        <a href="{{ url_for('static', path='static.html') }}" class="btn btn-secondary">Contenido Estático</a>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+FOOTER desde Index
+{% endblock %}

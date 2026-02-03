@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Fonts: Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', path='css/styles.css') }}">
+
+    {% block head %}
+    <title>{% block title %}PokeApp{% endblock %}</title>
+    {% endblock %}
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="navbar-container">
+            <a href="/" class="logo">
+                <span class="logo-icon">⚡</span> PokéApp
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/">Inicio</a></li>
+                    <li><a href="/pokemons">Lista Pokémons</a></li>
+                    <li><a href="/pokemons/new" class="btn btn-primary btn-sm">Nuevo Pokémon</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="content">
+        <div class="container">
+            {% block content %}
+            <!-- Content inject here -->
+            {% endblock %}
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2024 Pokemon App. Creado con FastAPI.</p>
+            <div class="footer-meta">
+                {% block footer %}
+                {% endblock %}
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
