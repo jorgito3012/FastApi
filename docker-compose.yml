@@ -1,13 +1,24 @@
-name: fastapi-mysql
+name: fastapi-pokemons
 
-services:   
-  db-mysql:  
-    image: mysql 
-    container_name: db-mysql-pokemons  
-    environment:  
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: pokemonsdb
-      MYSQL_USER: jorge
-      MYSQL_PASSWORD: sasa1234
+services: 
+  fastapi-app:  
+    build:  
+      context: .  
+      dockerfile: Dockerfile  
+    container_name: fastapi-app-pokemons 
+    restart: always  
     ports:  
-      - "13306:3306"  
+      - "8000:8000"  
+    depends_on:  
+      - fastapi-db  
+  fastapi-db:  
+    image: mysql 
+    container_name: fastapi-db-pokemons  
+    environment:  
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+    ports:  
+      - "3306:3306"  
+  
