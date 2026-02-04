@@ -5,7 +5,7 @@ Una aplicación web moderna para gestionar una colección de Pokémon, construid
 ## 🚀 Tecnologías
 
 *   **Backend**: Python, FastAPI
-*   **Base de Datos**: SQLModel (SQLite)
+*   **Base de Datos**: MySQL (manejada via Docker)
 *   **Frontend**: HTML5, Jinja2 Templates, CSS3 (Variables, Flexbox/Grid)
 *   **Diseño**: Interfaz "Premium" con diseño responsivo y animaciones.
 
@@ -35,7 +35,12 @@ Una aplicación web moderna para gestionar una colección de Pokémon, construid
     ```bash
     pip install fastapi uvicorn sqlmodel jinja2 python-multipart
     ```
-4.  **Ejecutar la aplicación**:
+4. **Levantar contenedor de la base de datos**
+    Abre una terminal en la carpeta `FastApi` (donde está el `docker-compose.yml`) y ejecuta:
+    ```bash
+    docker-compose up --build
+    ```
+5.  **Ejecutar la aplicación**:
     El archivo principal se encuentra en `src/main.py`. Asegúrate de ejecutarlo desde la raíz del proyecto.
     
 6.  **Abrir en el navegador**:
