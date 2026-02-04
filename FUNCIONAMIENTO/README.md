@@ -5,7 +5,8 @@ Una aplicación web moderna para gestionar una colección de Pokémon, construid
 ## 🚀 Tecnologías
 
 *   **Backend**: Python, FastAPI
-*   **Base de Datos**: SQLModel (SQLite)
+*   **Base de Datos**: MySQL (manejada via Docker)
+*   **Contenedorización**: Docker & Docker Compose
 *   **Frontend**: HTML5, Jinja2 Templates, CSS3 (Variables, Flexbox/Grid)
 *   **Diseño**: Interfaz "Premium" con diseño responsivo y animaciones.
 
@@ -13,43 +14,33 @@ Una aplicación web moderna para gestionar una colección de Pokémon, construid
 
 *   **Listado de Pokémon**: Visualiza todos tus pokémon en una tabla estilizada.
 *   **Detalle de Pokémon**: Tarjetas individuales con estadísticas visuales (Nivel, Ataque, Defensa).
-*   **Gestión**: Formulario para registrar nuevos Pokémon en la base de datos.
+*   **Gestión**: Formulario para registrar nuevos Pokémon en la base de datos MySQL.
+*   **Entorno Dev**: Configuración lista para usar con Docker Compose.
 *   **UI Moderna**:
     *   Barra de navegación responsiva.
     *   Paleta de colores moderna (Violeta/Indigo).
     *   Tipografía 'Outfit' de Google Fonts.
     *   Efectos Hover y micro-interacciones.
 
-## 🛠️ Instalación y Uso
+## 🛠️ Instalación y Uso (Docker)
+
+La forma recomendada de ejecutar este proyecto es utilizando **Docker Desktop**.
 
 1.  **Clonar el repositorio** (o descargar los archivos).
-2.  **Crear un entorno virtual**:
+2.  **Asegurarse de tener Docker Desktop iniciado**.
+3.  **Ejecutar la aplicación**:
+    Abre una terminal en la carpeta `FastApi` (donde está el `docker-compose.yml`) y ejecuta:
     ```bash
-    python -m venv .venv
-    # Windows
-    .\.venv\Scripts\activate
-    # Mac/Linux
-    source .venv/bin/activate
+    docker-compose up --build
     ```
-3.  **Instalar dependencias**:
-    ```bash
-    pip install fastapi uvicorn sqlmodel jinja2 python-multipart
-    ```
-4.  **Ejecutar la aplicación**:
-    El archivo principal se encuentra en `src/main.py`. Asegúrate de ejecutarlo desde la raíz del proyecto o ajustando el path.
-    ```bash
-    # Ejemplo desde la raíz
-    python src/main.py
-    ```
-    O usando uvicorn directamente si se prefiere:
-    ```bash
-    uvicorn src.main:app --reload
-    ```
-5.  **Abrir en el navegador**:
-    Visita `http://127.0.0.1:3000`
+4.  **Abrir en el navegador**:
+    Visita `http://localhost:8000`
+
+> **Nota**: La base de datos MySQL se crea e inicializa automáticamente dentro de su propio contenedor. No necesitas instalar nada extra en tu ordenador.
 
 ## 📂 Estructura del Proyecto
 
+*   `Dockerfile` / `docker-compose.yml`: Configuración para despliegue en contenedores.
 *   `src/main.py`: Punto de entrada de la aplicación.
 *   `src/data/`: Configuración de base de datos y repositorios.
 *   `src/models/`: Modelos de datos (SQLModel).

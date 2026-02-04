@@ -23,8 +23,8 @@ SessionDep = Annotated[Session, Depends(get_session)]
 
 app = FastAPI(lifespan=lifespan)
 
-app.mount("/static", StaticFiles(directory="src/static"), name="static")
-templates = Jinja2Templates(directory="src/templates")
+app.mount("/static", StaticFiles(directory="static"), name="static")
+templates = Jinja2Templates(directory="templates")
 
 app.include_router(api_pokemons_router)
 

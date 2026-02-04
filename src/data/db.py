@@ -1,11 +1,12 @@
 from sqlmodel import create_engine, SQLModel, Session
 from models.pokemon import Pokemon
+import os
 
-db_user: str = "jorge"  
-db_password: str =  "sasa1234"
-db_server: str = "localhost" 
-db_port: int = 13306  
-db_name: str = "pokemonsdb"  
+db_user: str = os.getenv("DB_USER", "jorge")
+db_password: str = os.getenv("DB_PASSWORD", "sasa1234")
+db_server: str = os.getenv("DB_SERVER", "fastapi-db")
+db_port: int = int(os.getenv("DB_PORT", 3306))
+db_name: str = os.getenv("DB_NAME", "pokemonsdb")
 
 DATABASE_URL = f"mysql+pymysql://{db_user}:{db_password}@{db_server}:{db_port}/{db_name}"
 engine = create_engine(DATABASE_URL, echo=True)
