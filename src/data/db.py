@@ -5,10 +5,10 @@ import os
 db_user: str = os.getenv("DB_USER", "jorge")
 db_password: str = os.getenv("DB_PASSWORD", "sasa1234")
 db_server: str = os.getenv("DB_SERVER", "fastapi-db")
-db_port: int = int(os.getenv("DB_PORT", 3306))
+db_port: int = int(os.getenv("DB_PORT", 5432))
 db_name: str = os.getenv("DB_NAME", "pokemonsdb")
 
-DATABASE_URL = f"mysql+pymysql://{db_user}:{db_password}@{db_server}:{db_port}/{db_name}"
+DATABASE_URL = f"postgresql://{db_user}:{db_password}@{db_server}:{db_port}/{db_name}"
 engine = create_engine(DATABASE_URL, echo=True)
 
 def get_session():

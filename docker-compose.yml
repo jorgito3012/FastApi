@@ -1,24 +1,22 @@
 name: fastapi-pokemons
 
-services: 
-  fastapi-app:  
-    build:  
-      context: .  
-      dockerfile: Dockerfile  
-    container_name: fastapi-app-pokemons 
-    restart: always  
-    ports:  
-      - "8000:8000"  
-    depends_on:  
-      - fastapi-db  
-  fastapi-db:  
-    image: mysql 
-    container_name: fastapi-db-pokemons  
-    environment:  
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE: ${DB_NAME}
-      MYSQL_USER: ${DB_USER}
-      MYSQL_PASSWORD: ${DB_PASSWORD}
-    ports:  
-      - "3306:3306"  
-  
+services:
+  fastapi-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: fastapi-app-pokemons
+    restart: always
+    ports:
+      - "8000:8000"
+    depends_on:
+      - fastapi-db
+  fastapi-db:
+    image: postgres:15-alpine
+    container_name: fastapi-db-pokemons
+    environment:
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+    ports:
+      - "5432:5432"

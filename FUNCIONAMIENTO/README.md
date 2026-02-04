@@ -5,7 +5,8 @@ Una aplicación web moderna para gestionar una colección de Pokémon, construid
 ## 🚀 Tecnologías
 
 *   **Backend**: Python, FastAPI
-*   **Base de Datos**: MySQL (manejada via Docker)
+*   **Base de Datos**: PostgreSQL (manejada via Docker)
+*   **Driver BD**: `psycopg2-binary` (Elegido por ser el estándar más robusto y fácil de implementar en entornos Docker/Dev sin compilación compleja).
 *   **Contenedorización**: Docker & Docker Compose
 *   **Frontend**: HTML5, Jinja2 Templates, CSS3 (Variables, Flexbox/Grid)
 *   **Diseño**: Interfaz "Premium" con diseño responsivo y animaciones.
@@ -14,7 +15,7 @@ Una aplicación web moderna para gestionar una colección de Pokémon, construid
 
 *   **Listado de Pokémon**: Visualiza todos tus pokémon en una tabla estilizada.
 *   **Detalle de Pokémon**: Tarjetas individuales con estadísticas visuales (Nivel, Ataque, Defensa).
-*   **Gestión**: Formulario para registrar nuevos Pokémon en la base de datos MySQL.
+*   **Gestión**: Formulario para registrar nuevos Pokémon en la base de datos PostgreSQL.
 *   **Entorno Dev**: Configuración lista para usar con Docker Compose.
 *   **UI Moderna**:
     *   Barra de navegación responsiva.
@@ -47,6 +48,16 @@ La forma recomendada de ejecutar este proyecto es utilizando **Docker Desktop**.
 *   `src/routers/`: Rutas de la API.
 *   `src/templates/`: Plantillas HTML (Jinja2).
 *   `src/static/`: Archivos estáticos (CSS, Imágenes).
+
+## 🔄 Cambios Recientes: Migración a PostgreSQL
+
+Recientemente se migró la base de datos de MySQL a **PostgreSQL** para aprovechar su mayor robustez y compatibilidad con entornos de producción modernos.
+
+### ¿Por qué `psycopg2-binary`?
+Para conectar Python con PostgreSQL, hemos elegido el driver **`psycopg2-binary`** en lugar de otras opciones (como `asyncpg` o `psycopg2` puro) por las siguientes razones:
+1.  **Facilidad de instalación**: Es una versión pre-compilada que incluye todas las librerías necesarias. Esto evita errores comunes de compilación en Docker (falta de `gcc`, `libpq-dev`, etc.) y acelera el tiempo de construcción del contenedor.
+2.  **Estabilidad**: Es el driver más maduro y ampliamente probado en el ecosistema Python.
+3.  **Compatibilidad**: Funciona perfectamente con `SQLModel` y `SQLAlchemy` sin configuraciones exóticas.
 
 ---
 Autor: Jorge Narbona Gallego
