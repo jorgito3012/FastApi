@@ -30,10 +30,11 @@ La forma recomendada de ejecutar este proyecto es utilizando **Docker Desktop**.
 2.  **Asegurarse de tener Docker Desktop iniciado**.
 3.  **Ejecutar la aplicación**:
     Abre una terminal en la carpeta `FastApi` (donde está el `docker-compose.yml`) y ejecuta:
+    
     ```bash
     docker-compose up --build
     ```
-4.  **Abrir en el navegador**:
+5.  **Abrir en el navegador**:
     Visita `http://localhost:8000`
 
 > **Nota**: La base de datos MySQL se crea e inicializa automáticamente dentro de su propio contenedor. No necesitas instalar nada extra en tu ordenador.
