@@ -61,3 +61,32 @@ Para conectar Python con PostgreSQL, hemos elegido el driver **`psycopg2-binary`
 
 ---
 Autor: Jorge Narbona Gallego
+
+## ☁️ Despliegue en Render
+
+Este proyecto está configurado para desplegarse fácilmente en **Render** utilizando Docker. Sigue estos pasos:
+
+### 1. Crear la Base de Datos (PostgreSQL)
+El primer paso es crear el servicio de base de datos donde se almacenarán los pokémon.
+
+1. Entra en tu dashboard de [Render](https://dashboard.render.com/).
+2. Haz clic en **New +** y selecciona **PostgreSQL**.
+3. Dale un nombre (ej. `fastapi-db`) y configura el resto de opciones (la capa gratuita es suficiente).
+4. Una vez creada, espera a que esté disponible y busca la sección **Internal Database URL**.
+5. Copia esa URL completa.
+   - Tendrá un formato similar a: `postgres://usuario:password@hostname:5432/basedatos`
+
+### 2. Crear el Servicio Web (Docker)
+Ahora desplegaremos la aplicación FastAPI utilizando la imagen de Docker.
+
+1. En el dashboard, haz clic en **New +** y selecciona **Web Service**.
+2. Conecta tu repositorio de GitHub donde tienes este código.
+3. Elige un nombre para tu servicio.
+4. En **Runtime** (Entorno), selecciona **Docker**.
+5. Render detectará automáticamente el `Dockerfile` en la raíz de tu repositorio.
+6. Desplázate hasta la sección **Environment Variables** y añade la siguiente variable:
+   - **Key**: `DB_URL`
+   - **Value**: *Pega la "Internal Database URL" que copiaste en el paso anterior*.
+7. Haz clic en **Create Web Service**.
+
+Render comenzará a construir la imagen de Docker baseda en tu `Dockerfile`. Una vez finalizado el despliegue, tu aplicación estará online. Gracias al evento `lifespan` definido en `main.py`, la base de datos se inicializará automáticamente con las tablas y datos de prueba la primera vez que arranque.
